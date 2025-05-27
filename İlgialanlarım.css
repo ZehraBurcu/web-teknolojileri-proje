@@ -1,0 +1,232 @@
+
+body {
+    background-image: url("fotograflar/arkaplanfantastik.jpg");
+  background-color: black;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.hakkimda
+{
+ color: #000;
+ background-color: antiquewhite;
+ text-align: left;
+ border: 1px solid black;
+ margin-top:50px;
+ margin-right: 100px;
+ margin-bottom:50px;
+ margin-left:100px;
+}
+
+.sporcenter
+{
+ margin-right: 100px;;
+ margin-bottom:20px;
+ margin-left:100px;
+}
+
+.footer
+{   position:fixed;
+    bottom: 0px;
+    height: 20px;
+    text-align: center;
+    background-color: gray;
+    color: black;
+    width:100%;
+    
+}
+
+.headeralign{
+    text-align:center
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+.textresponsive{
+    font-size:80%;
+    margin-left:50px;
+    margin-right:50px;
+    text-align:center;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    background-image: url('Resimler/navbar3.jpg');
+    display: flex; /* Navbar öğelerini yatay olarak hizala */
+    justify-content: center; /* Navbarı ortalama */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    margin-bottom:5px;
+    letter-spacing: 2px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px; /* Yazı ve ikon arasındaki genel boşluğu ayarlar */
+}
+
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 28px;
+    transition: color 0.3s ease;
+    margin-right: 5px; /* Yazı ile ikon arasındaki mesafeyi ayarlar */
+    display: inline-flex; /* İçeriği yatay hizalar */
+    align-items: center; /* İçeriği dikeyde hizalar */
+}
+nav ul li a:hover {
+    color: #ffcc00;
+}
+
+nav ul li a i {
+    margin-right: 5px; /* İkon ile yazı arasındaki mesafeyi ayarlar */
+}
+
+.title-box {
+    border-radius: 15px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center; /* Ortalamak için */
+    align-items: center; /* Ortalamak için */
+    text-align: center;
+}
+
+
+.title-box h2 {
+    font-size: 36px; /* Daha büyük bir boyut için */
+    margin: 0;
+    color: #ffffff;
+}
+
+.my-info {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color:rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#moviePosters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    background-color:rgba(0, 0, 0, 0.1);
+}
+
+.movie {
+    width: 250px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+}
+
+.movie img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.movie h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+
+/* Aktif Menü Öğesi Stili */
+#nav-links li a.active {
+    border: 10px solid rgb(10, 134, 134); /* Kenarlık rengi */
+    background-color:rgb(10, 134, 134); /* Arka plan rengi */
+    border-radius: 10%; /* Kenarlık köşelerini yuvarla */
+    color: #fff; /* Yazı rengini beyaz bırak */
+}
+
+/* Menü İkon Stili */
+.menu-icon {
+    display: none;
+    cursor: pointer;
+}
+
+/* Menü Linkleri Stili */
+#nav-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block; /* Menü öğelerini yan yana göster */
+    white-space: nowrap; /* Taşmayı engelle */
+}
+
+#nav-links li {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+#nav-links li:last-child {
+    margin-bottom: 0;
+}
+
+#nav-links li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Küçük Ekran Stilleri */
+@media only screen and (max-width: 768px) {
+    /* Menü İkonunu Göster */
+    .menu-icon {
+        display: block;
+    }
+
+    /* Menü Linklerini Gizle */
+    #nav-links {
+        display: none;
+    }
+
+    /* Açılır Menü Stili */
+    #nav-links.active {
+        display: block;
+    }
+
+    /* Ekran küçükken menü elemanlarını alt alta diz */
+    #nav-links li {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    #nav-links li:last-child {
+        margin-bottom: 0;
+    }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="İlgialanlarım.css">
+    <title>İlgi Alanlarım</title>
+</head>
+<body>
+    
+       <nav class="navbar navbar-expand-lg" style="background-color: rgb(66 66 69 / 70%);">
+    <div class="container-fluid" >
+        <div class="navbar-nav">
+          <a class="nav-link" aria-current="page" href="index.htm" style="color: white;">Hakkında</a>
+          <a class="nav-link" href="cv.htm" style="color: white;">CV</a>
+          <a class="nav-link" href="sehrim.htm" style="color: white;">Şehrim</a> 
+          <a class="nav-link " href="mirasimiz.htm" style="color: white;">Takımımız</a>
+          <a class="nav-link active" href="ilgialanlari.htm" style="color: white;">İlgi Alanları</a>  
+          <a class="nav-link" href="login.php" style="color: white;">Log in</a>
+          <a class="nav-link" href="iletisimform.htm" style="color: white;">İletişim Formu</a>
+      </div>
+    </div>
+  </nav> 
+
+
+    <section class="my-info">
+        <div id="moviePosters"></div>
+    </section>
+
+   
+
+    <script>
+        // TMDB API anahtarı
+        const apiKey = '791981b4f85714060c6b6110701f4fe9';
+        
+        // Filmlerin ID'leri ve özetlerini içeren nesneler dizisi
+        const movies = [
+            { id: 120, title: 'The Lord of the Rings: The Fellowship of the Ring' },
+            { id: 121, title: 'The Lord of the Rings: The Two Towers' },
+            { id: 122, title: 'The Lord of the Rings: The Return of the King' },
+            { id: 11, title: 'Star Wars: A New Hope' },
+            { id: 140607, title: 'Star Wars: The Force Awakens' },
+            { id: 671, title: 'Harry Potter and the Philosopher\'s Stone' },
+            { id: 672, title: 'Harry Potter and the Chamber of Secrets' },
+            { id: 673, title: 'Harry Potter and the Prisoner of Azkaban' }
+        ];
+        
+        // Posterlerin ve özetlerin gösterileceği div
+        const moviePostersDiv = document.getElementById('moviePosters');
+        
+        // Her film için poster ve özet almak için API isteği yapma fonksiyonu
+        function getMovieDetails(movie) {
+            fetch(`https://api.themoviedb.org/3/movie/${movie.id}?api_key=${apiKey}&language=en-US`)
+            .then(response => response.json())
+            .then(data => {
+                const posterPath = data.poster_path;
+                const posterUrl = `https://image.tmdb.org/t/p/w500${posterPath}`;
+                const overview = data.overview;
+                
+                // Posterleri ve özetleri görüntüleme
+                const movieDiv = document.createElement('div');
+                movieDiv.classList.add('movie');
+                movieDiv.innerHTML = `
+                    <h3>${movie.title}</h3>
+                    <img src="${posterUrl}" alt="${movie.title} poster">
+                    <p>${overview}</p>
+                `;
+                moviePostersDiv.appendChild(movieDiv);
+            })
+            .catch(error => {
+                console.error('Error fetching movie details:', error);
+            });
+        }
+        
+        // Her film için poster ve özet almak için fonksiyonu çağırma
+        movies.forEach(movie => {
+            getMovieDetails(movie);
+        });
+    </script>
+    <script src="menü.js"></script>
+<footer class="footer" style="background-color:  rgb(66 66 69 / 70%); position: fixed; bottom: 1; width: 100%;"> 
+      <p >Zehra BURCU tarafından oluşturulmuş bir web sitesidir. All rights reserved,2025</p>
+    </footer>
+</body>
+</html>

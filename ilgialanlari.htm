@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="stiller.css">
+    
+    <style>
+      body {
+        background-color: rgb(144, 209, 248);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+      #movie-list {
+        list-style-type: none;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+      #movie-list li {
+        margin: 10px 0;
+        font-size: 18px;
+        color: #333;
+      }
+      </style>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<!--Navbar Kodu-->
+<nav class="navbar navbar-expand-lg" style="background-color: rgb(66 66 69 / 70%);">
+    <div class="container-fluid" >
+        <div class="navbar-nav">
+          <a class="nav-link" aria-current="page" href="index.htm" style="color: white;">Hakkında</a>
+          <a class="nav-link" href="cv.htm" style="color: white;">CV</a>
+          <a class="nav-link" href="sehrim.htm" style="color: white;">Şehrim</a> 
+          <a class="nav-link " href="mirasimiz.htm" style="color: white;">Takımımız</a>
+          <a class="nav-link active" href="ilgialanlari.htm" style="color: white;">İlgi Alanları</a>  
+          <a class="nav-link" href="login.php" style="color: white;">Log in</a>
+          <a class="nav-link" href="iletisimform.htm" style="color: white;">İletişim Formu</a>
+      </div>
+    </div>
+  </nav> 
+  <!-- İçerik -->
+    <div class="container mt-4">
+      <h2>En İyi Filmler</h2>
+      <!-- Filmleri göstermek için liste -->
+      <ul id="movie-list"></ul>
+    </div>
+
+  <div class='container'>        
+    <form id="musicForm" action=''>
+<button id="submit" class="btn btn-primary">Gönder</button>
+        
+        <input type='hidden' id='hidden_token'>
+        <div class='col-sm-6 form-group row mt-4 px-0'>
+            <label for='Genre' class='form-label col-sm-2' style="color: rgb(255, 255, 255);">Tür:</label>
+            <select name='' id='select_genre' class='form-control form-control-sm col-sm-10'>
+                <option>Select...</option>                    
+            </select>
+        </div>
+        <div class='col-sm-6 form-group row px-0'>
+            <label for='Genre' class='form-label col-sm-2' style="color: rgb(255, 255, 255);">Çalma Listeleri:</label>
+            <select name='' id='select_playlist' class='form-control form-control-sm col-sm-10'>
+                <option>Select...</option>                    
+            </select>
+        </div>                  
+        <div class='col-sm-6 row form-group px-0'>
+            <button type='submit' id='btn_submit' class='btn btn-success col-sm-12'>Search</button>
+        </div>          
+    </form>        
+    <div class='row'>
+        <div class='col-sm-6 px-0'>
+            <div class='list-group song-list' id="song_list">
+                
+            </div>                                             
+        </div>
+        <div class='offset-md-1 col-sm-4' id='song-detail' >                
+        </div>
+    </div>   
+</div>
+<script>
+  // Güncellenmiş müzik türleri ve listeler
+  const genres = {
+    "Rock": ["Say Goodbye as We Dance with the Devils Tonight", "neverending circle"],
+    "Türkçe Rock": ["Lavaş'ın Süt İçerken Dinledikleri", "Yeni Nesil Rock"],
+    "Klasik": ["Elizabeth Bennet"],
+    "Arabesk": ["Orhan Gencebay Özel", "Yorgunuz Baba"]
+  };
+
+  const songs = {
+    "Say Goodbye as We Dance with the Devils Tonight": ["Breaking Benjamin– Dance with the Devil", "Three Days Grace – I Am Machine", "Charon – Bullet "],
+    "neverending circle": ["Linkin Park – Heavu is the Crown", "The Killers– Mr. Brightside"],
+    "Lavaş'ın Süt İçerken Dinledikleri": ["Yüksek Sadakat – Ben Seni Arayamam", "Athena – Kafama Göre"],
+    "Yeni Nesil Rock": ["Yüzyüzeyken Konuşuruz – Bodrum", "Mavi Gri – Ölümle Yaşam Arasında"],
+    "Elizabeth Bennet": ["5. Senfoni", "Ay Işığı Sonatı"],
+    "Orhan Gencebay Özel": ["Dil Yarası", "Batsın Bu Dünya"],
+    "Yorgunuz Baba": ["Bergen – Sen Affetsen", "Bergen – Benim için Üzülme"],
+  };
+
+  const genreSelect = document.getElementById('select_genre');
+  const playlistSelect = document.getElementById('select_playlist');
+  const songListDiv = document.getElementById('song_list');
+  const songDetailDiv = document.getElementById('song-detail');
+
+  // Türleri doldur
+  for (let genre in genres) {
+    const option = document.createElement('option');
+    option.value = genre;
+    option.textContent = genre;
+    genreSelect.appendChild(option);
+  }
+
+  // Tür seçilince listeleri doldur
+  genreSelect.addEventListener('change', function() {
+    playlistSelect.innerHTML = '<option value="">Seçiniz...</option>';
+    const selectedGenre = genreSelect.value;
+    if (genres[selectedGenre]) {
+      genres[selectedGenre].forEach(playlist => {
+        const option = document.createElement('option');
+        option.value = playlist;
+        option.textContent = playlist;
+        playlistSelect.appendChild(option);
+      });
+    }
+  });
+
+  // Form gönderilince şarkıları listele
+  document.getElementById('musicForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const selectedPlaylist = playlistSelect.value;
+    songListDiv.innerHTML = '';
+    songDetailDiv.innerHTML = '';
+    if (songs[selectedPlaylist]) {
+      songs[selectedPlaylist].forEach(song => {
+        const item = document.createElement('button');
+        item.className = 'list-group-item list-group-item-action';
+        item.textContent = song;
+        item.onclick = () => {
+          songDetailDiv.innerHTML = `<h5>${song}</h5><p>Bu şarkıya ait detaylar burada gösterilebilir.</p>`;
+        };
+        songListDiv.appendChild(item);
+      });
+    }
+  });
+</script>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+  <footer class="footer" style="background-color:  rgb(66 66 69 / 70%); position: fixed; bottom: 0; width: 100%;"> 
+    <p >Zehra BURCU tarafından oluşturulmuş bir web sitesidir. All rights reserved,2025</p>
+  </footer>
+</body>
+</html>
