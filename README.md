@@ -1,38 +1,33 @@
-# 🎓 Web Teknolojileri Dersi Projesi
+# 🎓 Web Technologies Course Project
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
-> Sakarya Üniversitesi Web Teknolojileri dersi kapsamında geliştirilmiş kişisel tanıtım web sitesi.
-
+> A personal website introducing myself and my hometown, developed for the Sakarya University Web Technologies course.
+> 
 <img width="1919" height="870" alt="image" src="https://github.com/user-attachments/assets/40c97f8d-cb9a-47c4-b1b1-0458befe976f" />
-
 
 ---
 
-## 📖 Proje Hakkında
+## 📖 About the Project
 
-Bu proje, web tasarımının temellerini öğrenmek ve uygulamak amacıyla geliştirilmiştir. Kapsamlı bir ticari portfolyodan ziyade; kendimi, eğitim geçmişimi ve ilgi alanlarımı tanıttığım, sade tasarımlı bir kişisel tanıtım sayfası niteliği taşımaktadır.
+This project was developed to learn and apply the fundamentals of web design. Rather than a comprehensive commercial portfolio, it serves as a simple, elegantly designed personal page introducing myself, my educational background, my interests, and my hometown.
 
-## 🌟 Öne Çıkan Özellikler
+## 🌟 Key Features
 
-* Karmaşıklıktan uzak, sade ve anlaşılır kullanıcı arayüzü
-* Tamamen temel (vanilla) HTML ve CSS ile sıfırdan tasarım
-* Herhangi bir dış kütüphane veya framework bağımlılığı içermeyen hafif yapı
+* Clean, simple, and user-friendly interface.
+* Built entirely from scratch using pure (vanilla) HTML and CSS.
+* Lightweight structure with no external library or framework dependencies.
 
-## 🛠️ Kullanılan Teknolojiler
+## 🛠️ Technologies Used
 
-* **İskelet ve İçerik:** HTML5
-* **Tasarım ve Stilleme:** CSS3
+* **Structure & Content:** HTML5
+* **Design & Styling:** CSS3
 
-## 📂 Kurulum ve Kullanım
+## 📂 Setup and Usage
 
-Bu proje statik dosyalardan oluştuğu için herhangi bir sunucu kurulumuna veya derleme (build) işlemine gerek yoktur. Bilgisayarınızda çalıştırmak için şu adımları izlemeniz yeterlidir:
+Since this project consists of static files, no server installation or build process is required. To run it on your local machine, simply follow these steps:
 
-1. Bu depoyu bilgisayarınıza indirin (klonlayın):
+1. Clone this repository to your computer:
    ```bash
-   git clone [https://github.com/ZehraBurcu/Web-Teknolojileri-Proje-.git](https://github.com/ZehraBurcu/Web-Teknolojileri-Proje-.git)
-2. İndirdiğiniz klasörün içine girin.
-3. Ana dizinde bulunan index.html dosyasını favori web tarayıcınızda (Chrome, Edge, Safari vb.) çift tıklayarak açın.
-  
-  💡Yazılımcılar için not: Eğer projeyi VS Code üzerinde inceliyorsanız, Live Server eklentisini kullanarak projeyi anında canlı olarak da çalıştırabilirsiniz.
+   git clone [https://github.com/ZehraBurcu/web-teknolojileri-proje.git](https://github.com/ZehraBurcu/web-teknolojileri-proje.git)
